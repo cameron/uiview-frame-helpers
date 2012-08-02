@@ -7,8 +7,7 @@ Pod::Spec.new do |s|
   s.author       = { "Cameron Boehmer" => "git@cameronboehmer.com" }
   s.source       = { :git => "git://github.com/cameronboehmer/uiview-frame-helpers.git", :tag => "0.1" }
 
-  s.ios.deployment_target = '5.0'
-  s.osx.deployment_target = '10.7'
+  s.ios.deployment_target = '3.0'
   s.source_files = 'UIView+CBFrameHelpers*'
   s.framework  = 'UIKit'
 end
