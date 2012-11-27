@@ -76,7 +76,7 @@
 
 - (void)_setY:(CGFloat)y
 {
-    [self setX:y];
+    [self setY:y];
 }
 
 - (id)setXAndYFromPoint:(CGPoint)point
