@@ -73,6 +73,9 @@
 - (id)scaleProportionallyToHeight:(CGFloat)h;
 - (CGFloat)aspectRatio;
 
+// rounding coords of view frame
+- (id)alignToPixel;
+
 - (BOOL)isInside:(UIView *)view;
 - (id)debug;
 - (id)removeSubviews;
