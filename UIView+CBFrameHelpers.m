@@ -371,6 +371,11 @@
     return self;
 }
 
+- (id)alignToPixel{
+	self.frame = CGRectMake(roundf(self.x), roundf(self.y), roundf(self.width), roundf(self.height));
+	return self;
+}
+
 - (BOOL)isInside:(UIView *)view{
     CGPoint p = [self.superview convertPoint:self.frame.origin toView:view];
     return (p.y < view.frame.size.height &&
