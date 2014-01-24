@@ -1,41 +1,45 @@
 Drowning in layout code? Use these helpers to reduce layout code by up to 75% in common cases. See the .h file for the complete interface.
 
-### Then
+### Setting X and Y
+```Objective-C
+// Then
+CGRect frame = myView.frame;
+frame.origin.x = ...
+frame.origin.y = ...
+myView.frame = frame;
 
-    CGRect frame = myView.frame;
-    frame.origin.x = ...
-    frame.origin.y = ...
-    myView.frame = frame;
+// Now
+[myView setX:myXVal andY:myYVal];
+```
 
-### Now
+### Adjusting X and Y
+```Objective-C
+// Then
+CGRect frame = myView.frame;
+frame.origin.x = frame.origin.x + xDelta;
+frame.origin.y = frame.origin.y + yDelta;
+myView.frame = frame;
 
-    [myView setX:myXVal andY:myYVal];
+// Now
+[myView adjustX:xDelta andY:yDelta];
+```
 
-### Then
+### Positioning relative to another view, or the superview 
+```Objective-C
+// Then
+CGRect frame = myView.frame;
+frame.origin.x = myOtherView.origin.x + myOtherView.size.width + kMyPaddingConst;
+frame.origin.y = myOtherView.origin.y;
+myView.frame = frame;
 
-    CGRect frame = myView.frame;
-    frame.origin.x = frame.origin.x + xDelta;
-    frame.origin.y = frame.origin.y + yDelta;
-    myView.frame = frame;
+// Now
+[myView insideTopEdgeOfSuperviewBy:0];
+[myView outsideRightEdgeOf:myOtherView by:kMyPaddingConst];
+```
 
-### Now
+### Chaining
 
-    [myView adjustX:xDelta andY:yDelta];
+```Objective-C
+[[myView insideTopEdgeOfSuperviewBy:0] outsideRightEdgeOf:myOtherView by:kMyPaddingConst];
+```
 
-### Then
-
-    CGRect frame = myView.frame;
-    frame.origin.x = myOtherView.origin.x + myOtherView.size.width + kMyPaddingConst;
-    frame.origin.y = myOtherView.origin.y;
-    myView.frame = frame;
-
-### Now
-
-    [myView insideTopEdgeOfSuperviewBy:0];
-    [myView outsideRightEdgeOf:myOtherView by:kMyPaddingConst];
-
-# Notes
-
-If you are using the relative positioning helpers, e.g. insideSomeEdgeOfSuperviewBy: or outsideOtherEdgeOf:by:, make sure to call them after you've added the receiver to its superview.
-
-The more-generic inside/outsideOf:by: methods do not depend on the view hierarchy's configuration.
